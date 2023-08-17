@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dynamic zoom in-out, using pre trained model in TensorFlow.js</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>  
+  <body>
+    <div id = "login_page" style="
+      margin-left: auto;
+      margin-right: auto;
+      width: 20%;
+      display: grid">
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="roomname">Room Name:</label>
+        <input type="text" id="roomname" name="roomname"><br><br>
+        <button id="joinRoomButton">Submit </button>
+    </div>
+
+    <div id="meeting_page" style="display: none;">
+      <label for="isdynamic">Turn On Dynamic WebCam</label>
+      <input type="checkbox" id="isdynamic" name="isdynamic"><br><br>
+      <div style="display: flex;">
+        <label style="margin-left: 20px; margin-right: 4px;">Self video</label><br>
+        <video id="local_video" width="480" height="360" autoplay muted></video>
+        <label id="remoteVideoLabel" style="visibility: hidden; margin-left: 20px; margin-right: 4px;">Remote video</label><br>
+        <video id="remote_video" width="480" height="360" autoplay></video>
+        <canvas id="finalCanvas" width="480" height="360"></canvas>
+      </div>
+    </div>
+
+<!-- Require the peer dependencies of face-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-detection"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/8.2.2/adapter.min.js" ></script>
+
+    <!-- Import Janus SDK -->
+    <script src="./janus-service/janus.js"></script>
+
+    <script src="./janus-service/janus-service.js"></script>
+
+    <!-- Import the page's JavaScript to do some stuff -->
+    <script type="module" src="./script.js"></script>
+ 
+  </body>
+</html>
